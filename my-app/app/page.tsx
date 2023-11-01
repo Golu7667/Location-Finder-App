@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 
 function DynamicContent() {
   const [data, setData] = useState(null);
-   
+  const [isButton,setIsButton]=useState(false) 
+
   useEffect(() => {
     // Fetch data from an API or perform other side effects
     fetch('https://api.example.com/data')
@@ -12,11 +13,19 @@ function DynamicContent() {
       .then((data) => {
         setData(data);
       });
-  }, []); // Empty dependency array means the effect runs once after the initial render
+  }, [isButton]); // Empty dependency array means the effect runs once after the initial render
+
+   const handle=()=>{
+    setIsButton(true)
+   }
 
   return (
     <div>
-      {data ? <p>Data: {data}</p> : <p>Loading data...</p>}
+      {data ? <p>Data: {data}</p> :
+      <button onClick={()=>handle}>Find Your Loacation </button>
+      
+      }
+
     </div>
   );
 }
