@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 
 function DynamicContent() {
   const [isButton,setIsButton]=useState(false) 
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
 
   useEffect(() => {
     // Check if geolocation is available in the browser
